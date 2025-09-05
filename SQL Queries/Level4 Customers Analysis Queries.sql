@@ -16,8 +16,9 @@ Customer Data Analysis:
 
 
 /* 1. How many unique customer types does the data have, list them along with count of each. */
-SELECT distinct customer_type AS unique_customers
-FROm sales;   
+SELECT customer_type AS unique_customers, COUNT(*)
+FROM sales
+GROUP BY customer_type;   
 
 
 /*  2. How many unique payment methods does the data have. */
@@ -30,7 +31,7 @@ FROM sales;
 SELECT customer_type, COUNT(customer_type) AS count
 FROM sales
 GROUP BY customer_type
-ORDER BY count
+ORDER BY count DESC
 LIMIT 1;
 
 /* 4. Which customer type buys the most?  */
@@ -46,7 +47,7 @@ LIMIT 1;
 SELECT gender, COUNT(gender) AS most_cmn_gender
 FROM sales
 GROUP BY gender
-ORDER BY most_cmn_gender
+ORDER BY most_cmn_gender DESC
 LIMIT 1;
 
 
@@ -55,7 +56,7 @@ LIMIT 1;
 SELECT branch , gender, COUNT(gender) AS gender_distr
 FROM sales
 GROUP BY branch,gender
-ORDER BY branch;            /* In alphabatically Ascending Order */
+ORDER BY branch, gender;            /* In alphabatically Ascending Order */
 
 
 
